@@ -5,9 +5,9 @@ import Header from '@/components/header';
 import { usePathname } from 'next/navigation';
 
 const dashboardLinks = [
-  { label: 'Category 1', href: '/1' },
-  { label: 'Category 2', href: '/2' },
-  { label: 'Category 3', href: '/3' },
+  { label: 'Category 1', href: '/1', id: '1' },
+  { label: 'Category 2', href: '/2', id: '2' },
+  { label: 'Category 3', href: '/3', id: '3' },
 
   // Add more links as needed
 ];

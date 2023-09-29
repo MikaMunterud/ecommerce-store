@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/navigation-menu';
 
 interface NavbarProps {
-  links: { label: string; href: string }[];
+  links: { label: string; href: string; id: string }[];
   currentUrl: string;
 }
 
@@ -14,7 +14,7 @@ export default function Navbar({ links, currentUrl }: NavbarProps) {
   return (
     <NavigationMenu className="mx-6 flex items-center space-x-4 lg:space-x-6">
       {links.map(function (link, index: any) {
-        const isActive = `${link.href}` === currentUrl;
+        const isActive = `/category/${link.id}` === currentUrl;
 
         return (
           <NavigationMenuLink

@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 import { ShoppingBag } from 'lucide-react';
 
 interface HeaderProps {
-  links: { label: string; href: string }[];
+  links: { label: string; href: string; id: string }[];
   currentUrl: string;
   storeName: string;
   cartItems: number;
