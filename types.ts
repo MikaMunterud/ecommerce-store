@@ -1,0 +1,1 @@
+/* Declare interface types here that can be imported everywhere */
