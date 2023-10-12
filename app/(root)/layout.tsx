@@ -21,7 +21,7 @@ export default function HomeLayout({
   useEffect(() => {
     async function getCategories() {
       const response = await fetch(
-        "https://ecommerce-dashboard-kohl.vercel.app/api/da93f622-75b0-46a4-a2ed-ef13507e9278/categories"
+        "https://ecommerce-dashboard-kohl.vercel.app/api/47844042-830e-489a-a010-ab5c442bb816/categories"
       );
       const categories = await response.json();
       const links = categories.map((category: any) => ({
