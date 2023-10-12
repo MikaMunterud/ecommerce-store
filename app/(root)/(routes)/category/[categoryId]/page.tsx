@@ -9,7 +9,7 @@ type Products = {
   id: string;
   name: string;
   price: number;
-  imageUrl: string;
+  images: string;
   categoryId: string;
 };
 
@@ -52,7 +52,7 @@ export default function Category() {
               id={product.id}
               label={product.name}
               price={product.price}
-              imageUrl={product.imageUrl}
+              imageUrl={product.images}
             />
           ))}
         </div>
