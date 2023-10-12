@@ -5,22 +5,17 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import Image from 'next/image';
+} from "@/components/ui/card";
+import Image from "next/image";
 
 interface ProductProps {
+  id: string;
   imageUrl: string;
   label: string;
-  category: string;
   price: number;
 }
 
-export default function ProductCard({
-  imageUrl,
-  label,
-  category,
-  price,
-}: ProductProps) {
+export default function ProductCard({ imageUrl, label, price }: ProductProps) {
   return (
     <Card>
       <Image
@@ -32,7 +27,6 @@ export default function ProductCard({
       />
       <CardContent className="mt-4">
         <CardTitle className="font-semibold text-lg ">{label}</CardTitle>
-        <CardDescription>{category}</CardDescription>
         <CardFooter className="flex items-left justify-between mt-4 p-0">
           <div className="font-semibold">$ {price}</div>
         </CardFooter>
