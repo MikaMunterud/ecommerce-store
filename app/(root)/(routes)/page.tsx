@@ -4,21 +4,21 @@ import HeroBanner from "@/components/hero-banner";
 import ProductCard from "@/components/product-card";
 import { useEffect, useState } from "react";
 
+type Products = {
+  id: string;
+  name: string;
+  price: number;
+  imageUrl: string;
+  categoryId: string;
+};
+
 const heroBanner = {
   label: "E-commerce Store",
   url: "https://media.istockphoto.com/id/1316968335/sv/foto/kundvagn-full-av-mat-p%C3%A5-gul-bakgrund-mataff%C3%A4rskoncept.jpg?s=612x612&w=0&k=20&c=5NBtN9fhss48STDiV-KAdYkpmc6tB8LEcdKF2nEaT44=",
 };
 
 export default function Home() {
-  const [products, setProducts] = useState<
-    {
-      id: string;
-      name: string;
-      price: number;
-      imageUrl: string;
-      categoryId: string;
-    }[]
-  >([]);
+  const [products, setProducts] = useState<Products[]>([]);
 
   useEffect(() => {
     async function getProducts() {
@@ -28,7 +28,6 @@ export default function Home() {
       const data = await response.json();
       const products = data.body.products;
       setProducts(products);
-      console.log(products);
     }
     getProducts();
   }, []);
