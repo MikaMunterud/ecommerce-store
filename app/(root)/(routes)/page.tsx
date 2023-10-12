@@ -23,10 +23,9 @@ export default function Home() {
   useEffect(() => {
     async function getProducts() {
       const response = await fetch(
-        "https://ecommerce-dashboard-kohl.vercel.app/api/da93f622-75b0-46a4-a2ed-ef13507e9278/products"
+        "https://ecommerce-dashboard-kohl.vercel.app/api/47844042-830e-489a-a010-ab5c442bb816/products"
       );
-      const data = await response.json();
-      const products = data.body.products;
+      const products = await response.json();
       setProducts(products);
     }
     getProducts();

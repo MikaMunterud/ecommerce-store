@@ -1,40 +1,51 @@
-'use client';
+"use client";
 
-import Footer from '@/components/footer';
-import Header from '@/components/header';
-import { usePathname } from 'next/navigation';
+import Header from "@/components/header";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const dashboardLinks = [
-  { label: 'Category 1', href: '/1', id: '1' },
-  { label: 'Category 2', href: '/2', id: '2' },
-  { label: 'Category 3', href: '/3', id: '3' },
-
-  // Add more links as needed
-];
-
-const exampleStore: string = 'Hakims e-shop';
-const exampleCartItems: number = 4;
+type DashboardLink = {
+  label: string;
+  href: string;
+  id: string;
+};
 
 export default function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [dashboardLinks, setDashboardLinks] = useState<DashboardLink[]>([]);
   const pathname = usePathname();
+
+  useEffect(() => {
+    async function getCategories() {
+      const response = await fetch(
+        "https://ecommerce-dashboard-kohl.vercel.app/api/47844042-830e-489a-a010-ab5c442bb816/categories"
+      );
+      const categories = await response.json();
+      const links = categories.map((category: any) => ({
+        label: category.name,
+        href: `/${category.id}`,
+        id: category.id,
+      }));
+      setDashboardLinks(links);
+    }
+    getCategories();
+  }, []);
 
   return (
     <>
       <Header
         links={dashboardLinks}
         currentUrl={pathname}
-        storeName={exampleStore}
-        cartItems={exampleCartItems}
+        storeName="Store"
+        cartItems={6}
       />
 
       <main className="mx-auto max-w-7xl">
         <div className="space-y-10 pb-10">{children}</div>
       </main>
-      <Footer storeName={exampleStore} />
     </>
   );
 }
