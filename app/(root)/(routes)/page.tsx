@@ -10,15 +10,16 @@ type Products = {
   price: number;
   imageUrl: string;
   categoryId: string;
-};
-
-const heroBanner = {
-  label: "E-commerce Store",
-  url: "https://media.istockphoto.com/id/1316968335/sv/foto/kundvagn-full-av-mat-p%C3%A5-gul-bakgrund-mataff%C3%A4rskoncept.jpg?s=612x612&w=0&k=20&c=5NBtN9fhss48STDiV-KAdYkpmc6tB8LEcdKF2nEaT44=",
+  images: string;
 };
 
 export default function Home() {
   const [products, setProducts] = useState<Products[]>([]);
+
+  const heroBanner = {
+    label: "E-commerce Store",
+    url: "https://media.istockphoto.com/id/1316968335/sv/foto/kundvagn-full-av-mat-p%C3%A5-gul-bakgrund-mataff%C3%A4rskoncept.jpg?s=612x612&w=0&k=20&c=5NBtN9fhss48STDiV-KAdYkpmc6tB8LEcdKF2nEaT44=",
+  };
 
   useEffect(() => {
     async function getProducts() {
@@ -45,7 +46,7 @@ export default function Home() {
               id={product.id}
               label={product.name}
               price={product.price}
-              imageUrl={product.imageUrl}
+              imageUrl={product.images}
             />
           ))}
         </div>
