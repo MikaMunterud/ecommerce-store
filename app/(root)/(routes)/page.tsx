@@ -1,20 +1,14 @@
 'use client';
 
+import { getProducts } from '@/actions/get-products';
 import HeroBanner from '@/components/hero-banner';
 import ProductCard from '@/components/product-card';
+import { FormattedProduct, Product } from '@/types';
+
 import { useEffect, useState } from 'react';
 
-type Products = {
-  id: string;
-  name: string;
-  price: number;
-  imageUrl: string;
-  categoryId: string;
-  img: string;
-};
-
 export default function Home() {
-  const [products, setProducts] = useState<Products[]>([]);
+  const [products, setProducts] = useState<FormattedProduct[] | any>([]);
 
   const heroBanner = {
     label: 'E-commerce Store',
@@ -22,14 +16,12 @@ export default function Home() {
   };
 
   useEffect(() => {
-    async function getProducts() {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/products`,
-      );
-      const products = await response.json();
+    async function getData() {
+      const products = await getProducts();
+      console.log(products);
       setProducts(products);
     }
-    getProducts();
+    getData();
   }, []);
 
   return (
@@ -40,14 +32,8 @@ export default function Home() {
           <h3 className="font-bold text-3xl">Featured Products</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              label={product.name}
-              price={product.price}
-              imageUrl={product.img}
-            />
+          {products.map((product: FormattedProduct) => (
+            <ProductCard key={product.id} data={product} />
           ))}
         </div>
       </div>
