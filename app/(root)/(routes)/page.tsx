@@ -18,7 +18,7 @@ export default function Home() {
   useEffect(() => {
     async function getData() {
       const products = await getProducts();
-      console.log(products);
+
       setProducts(products);
     }
     getData();
