@@ -1,6 +1,6 @@
 'use client';
 
-import { Product } from '@/types';
+import { FormattedProduct } from '@/types';
 import Currency from '@/components/ui/currency';
 
 import { ShoppingCart } from 'lucide-react';
@@ -8,7 +8,7 @@ import useCart from '@/hooks/use-cart';
 import { Button } from './ui/button';
 
 interface InfoProps {
-  data: Product;
+  data: FormattedProduct;
 }
 
 const Info: React.FC<InfoProps> = ({ data }) => {
@@ -29,13 +29,13 @@ const Info: React.FC<InfoProps> = ({ data }) => {
       <hr className="my-4" />
       <div className="flex items-center gap-x-4">
         <h3 className="font-semibold text-black">Size:</h3>
-        <div>{data?.size?.name}</div>
+        <div>{data?.size}</div>
       </div>
       <div className="flex items-center gap-x-4">
         <h3 className="font-semibold text-black">Color:</h3>
         <div
           className="h-6 w-6 rounded-full border border-gray-600"
-          style={{ backgroundColor: data?.color?.value }}
+          style={{ backgroundColor: data?.color }}
         />
       </div>
       <div className="mt-10 flex items-center gap-x-3">
