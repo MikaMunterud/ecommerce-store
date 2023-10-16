@@ -20,6 +20,7 @@ export interface FormattedProduct {
   img: string;
   description: string;
   storeId: string;
+  categoryId: string;
   category: string;
   size: string;
   color: string;

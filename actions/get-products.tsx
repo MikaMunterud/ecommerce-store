@@ -46,6 +46,7 @@ async function formatProducts(
       name: product.name,
       description: product.description,
       price: product.price,
+      categoryId: product.categoryId,
       category: categories.find(function (category: Category) {
         return category.id === product.categoryId;
       })?.name,

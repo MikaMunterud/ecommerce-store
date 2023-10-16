@@ -4,7 +4,8 @@ import HeroBanner from '@/components/hero-banner';
 import ProductCard from '@/components/product-card';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { Product } from '@/types';
+import { FormattedProduct } from '@/types';
+import { getProducts } from '@/actions/get-products';
 
 const heroBanner = {
   label: 'Category',
@@ -12,23 +13,20 @@ const heroBanner = {
 };
 
 export default function Category() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<FormattedProduct[] | any>([]);
   const categoryId = usePathname().replace('/category/', '');
 
   useEffect(() => {
-    async function getProducts() {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/products`,
-      );
-      const products = await response.json();
+    async function getData() {
+      const products = await getProducts();
 
       setProducts(products);
     }
-    getProducts();
+    getData();
   }, []);
 
   const filteredProducts = products.filter(
-    (product) => product.categoryId === categoryId,
+    (product: FormattedProduct) => product.categoryId === categoryId,
   );
 
   return (
@@ -39,7 +37,7 @@ export default function Category() {
           <h3 className="font-bold text-3xl">Featured Products</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filteredProducts.map((product) => (
+          {filteredProducts.map((product: FormattedProduct) => (
             <ProductCard key={product.id} data={product} />
           ))}
         </div>
