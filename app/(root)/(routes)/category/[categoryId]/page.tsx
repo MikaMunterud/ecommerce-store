@@ -1,41 +1,32 @@
-"use client";
+'use client';
 
-import HeroBanner from "@/components/hero-banner";
-import ProductCard from "@/components/product-card";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-
-type Products = {
-  id: string;
-  name: string;
-  price: number;
-  images: string;
-  categoryId: string;
-};
+import HeroBanner from '@/components/hero-banner';
+import ProductCard from '@/components/product-card';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { FormattedProduct } from '@/types';
+import { getProducts } from '@/actions/get-products';
 
 const heroBanner = {
-  label: "Category",
-  url: "https://wedevs.com/_ipx/https://cdn.wedevs.com/uploads/2023/09/How-to-Create-WooCommerce-B2B-Wholesale-Multivendor-Marketplaces-Using-Dokan-and-WholesaleX.png?f=webp&q=90",
+  label: 'Category',
+  url: 'https://wedevs.com/_ipx/https://cdn.wedevs.com/uploads/2023/09/How-to-Create-WooCommerce-B2B-Wholesale-Multivendor-Marketplaces-Using-Dokan-and-WholesaleX.png?f=webp&q=90',
 };
 
 export default function Category() {
-  const [products, setProducts] = useState<Products[]>([]);
-  const categoryId = usePathname().replace("/category/", "");
+  const [products, setProducts] = useState<FormattedProduct[] | any>([]);
+  const categoryId = usePathname().replace('/category/', '');
 
   useEffect(() => {
-    async function getProducts() {
-      const response = await fetch(
-        "https://ecommerce-dashboard-kohl.vercel.app/api/47844042-830e-489a-a010-ab5c442bb816/products"
-      );
-      const products = await response.json();
+    async function getData() {
+      const products = await getProducts();
 
       setProducts(products);
     }
-    getProducts();
+    getData();
   }, []);
 
   const filteredProducts = products.filter(
-    (product) => product.categoryId === categoryId
+    (product: FormattedProduct) => product.categoryId === categoryId,
   );
 
   return (
@@ -46,14 +37,8 @@ export default function Category() {
           <h3 className="font-bold text-3xl">Featured Products</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              label={product.name}
-              price={product.price}
-              imageUrl={product.images}
-            />
+          {filteredProducts.map((product: FormattedProduct) => (
+            <ProductCard key={product.id} data={product} />
           ))}
         </div>
       </div>

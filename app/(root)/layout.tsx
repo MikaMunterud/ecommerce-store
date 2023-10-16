@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Header from "@/components/header";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import Header from '@/components/header';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 type DashboardLink = {
   label: string;
@@ -21,7 +21,7 @@ export default function HomeLayout({
   useEffect(() => {
     async function getCategories() {
       const response = await fetch(
-        "https://ecommerce-dashboard-kohl.vercel.app/api/47844042-830e-489a-a010-ab5c442bb816/categories"
+        `${process.env.NEXT_PUBLIC_API_URL}/categories`,
       );
       const categories = await response.json();
       const links = categories.map((category: any) => ({
@@ -36,12 +36,7 @@ export default function HomeLayout({
 
   return (
     <>
-      <Header
-        links={dashboardLinks}
-        currentUrl={pathname}
-        storeName="Store"
-        cartItems={6}
-      />
+      <Header links={dashboardLinks} currentUrl={pathname} storeName="Store" />
 
       <main className="mx-auto max-w-7xl">
         <div className="space-y-10 pb-10">{children}</div>
