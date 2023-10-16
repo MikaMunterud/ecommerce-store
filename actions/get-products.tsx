@@ -1,6 +1,5 @@
 import { Category, Color, Product, Size } from '@/types';
 import axios from 'axios';
-import toast from 'react-hot-toast';
 import { format } from 'date-fns';
 
 export async function getProducts() {
