@@ -1,15 +1,17 @@
+import { Billboard } from '@/types';
+
 interface HeroBannerProps {
-  imageUrl: string;
-  label: string;
+  data: Billboard;
 }
 
-export default function HeroBanner({ imageUrl, label }: HeroBannerProps) {
+export default function HeroBanner({ data }: HeroBannerProps) {
   const bannerStyles = {
-    backgroundImage: `url(${imageUrl})`,
+    backgroundImage: `url(${data.img})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    color: '#ffffff',
+    color: '#4a4a4a',
   };
+  console.log(data);
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
@@ -18,8 +20,8 @@ export default function HeroBanner({ imageUrl, label }: HeroBannerProps) {
         style={bannerStyles}
       >
         <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8">
-          <div className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs">
-            {label}
+          <div className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs bg-white py-4 px-6 rounded-3xl bg-opacity-75">
+            {data.name}
           </div>
         </div>
       </div>
