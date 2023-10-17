@@ -31,14 +31,14 @@ export interface FormattedProduct {
 }
 export interface Billboard {
   id: string;
-  label: string;
+  name: string;
   img: string;
 }
 
 export interface Category {
   id: string;
   name: string;
-  billboard: Billboard;
+  billboardId: string;
 }
 
 export interface Size {
@@ -51,4 +51,8 @@ export interface Color {
   id: string;
   name: string;
   value: string;
+}
+
+export interface Store {
+  name: string;
 }
