@@ -7,7 +7,6 @@ import useCart from '@/hooks/use-cart';
 
 import CartItem from './components/cart-item';
 import Summary from './components/summary';
-import ContactForm from './components/contact-form';
 
 export const revalidate = 0;
 
@@ -40,7 +39,6 @@ const CartPage = () => {
               </ul>
             </div>
             <Summary />
-           <ContactForm />
           </div>
         </div>
       </Container>
