@@ -19,7 +19,7 @@ export default function Home() {
       setProducts(products);
 
       const billboard = await getBillboard(
-        `2581da0d-8150-4169-8e8a-babb8dea2092`,
+        `${process.env.NEXT_PUBLIC_HOMEPAGE_BILLBOARD}`,
       );
 
       setBillboard(billboard);
