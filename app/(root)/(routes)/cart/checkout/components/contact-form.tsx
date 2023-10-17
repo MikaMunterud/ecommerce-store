@@ -101,8 +101,6 @@ const ContactForm = () => {
         data,
       );
 
-      console.log(response);
-
       toast.success('Order completed.');
       setSubmitted(true);
     } catch (error) {
