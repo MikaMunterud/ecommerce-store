@@ -20,8 +20,12 @@ export async function getProducts() {
     const colors = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/colors`);
     const colorsData = await colors.data;
 
+    const products = data.filter(function (product: Product) {
+      return !product.isArchived;
+    });
+
     const formattedProducts = await formatProducts(
-      data,
+      products,
       categoriesData,
       sizesData,
       colorsData,
