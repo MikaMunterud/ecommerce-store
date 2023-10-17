@@ -29,7 +29,7 @@ export async function getProducts() {
 
     return formattedProducts;
   } else {
-    return null;
+    return [];
   }
 }
 
