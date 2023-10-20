@@ -37,7 +37,7 @@ export default function ProductCard({ data }: ProductProps) {
   return (
     <Card className="aspect-square rounded-xl relative">
       <Image
-        className="aspect-square object-cover rounded-md"
+        className="aspect-square object-cover rounded-xl p-2"
         src={data.img}
         alt={data.name}
         height={400}
