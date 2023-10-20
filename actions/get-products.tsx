@@ -48,7 +48,7 @@ async function formatProducts(
       id: product.id,
       name: product.name,
       description: product.description,
-      price: product.price,
+      price: Number(product.price).toFixed(2),
       categoryId: product.categoryId,
       category: categories.find(function (category: Category) {
         return category.id === product.categoryId;
