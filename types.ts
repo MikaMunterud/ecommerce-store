@@ -56,3 +56,17 @@ export interface Color {
 export interface Store {
   name: string;
 }
+
+export interface Order {
+  name: string;
+  email: string;
+  address: string;
+  phone: string;
+  totalPrice: number;
+  orderItems: OrderItem[];
+}
+
+export interface OrderItem {
+  productId: string;
+  quantity: number;
+}
