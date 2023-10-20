@@ -16,7 +16,10 @@ const CartPage = () => {
 
   useEffect(() => {
     setIsMounted(true);
-  }, []);
+  }, [cart.items]);
+  const uniqueItems: string[] = cart.items
+    .map((item) => item.id)
+    .filter((value, index, self) => self.indexOf(value) === index);
 
   if (!isMounted) {
     return null;
@@ -33,9 +36,22 @@ const CartPage = () => {
                 <p className="text-neutral-500">No items added to cart.</p>
               )}
               <ul>
-                {cart.items.map((item) => (
-                  <CartItem key={item.id} data={item} />
-                ))}
+                {uniqueItems.map(function (item) {
+                  const indexOf = cart.items.findLastIndex(function (x) {
+                    return x.id === item;
+                  });
+
+                  const amount = cart.items.filter(function (x) {
+                    return x.id === item;
+                  });
+                  return (
+                    <CartItem
+                      key={item}
+                      data={cart.items[indexOf]}
+                      amount={amount.length}
+                    />
+                  );
+                })}
               </ul>
             </div>
             <Summary />
