@@ -48,7 +48,7 @@ const CartItem: React.FC<CartItemProps> = ({ data, amount }) => {
             <p className=" text-lg font-semibold text-black">{`${data.price} kr`}</p>
           </div>
 
-          <div className="mt-1 flex text-sm">
+          <div className="mt-1 flex text-sm items-center justify-center">
             <p className="text-gray-500">{data.color}</p>
             <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">
               {data.size}
