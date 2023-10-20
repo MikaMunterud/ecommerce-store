@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { toast } from 'react-hot-toast';
-import { X } from 'lucide-react';
+import { X, Minus, Plus } from 'lucide-react';
 
 import IconButton from '@/components/ui/icon-button';
 import Currency from '@/components/ui/currency';
@@ -9,12 +9,21 @@ import { FormattedProduct, Product } from '@/types';
 
 interface CartItemProps {
   data: FormattedProduct;
+  amount: number;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ data }) => {
+const CartItem: React.FC<CartItemProps> = ({ data, amount }) => {
   const cart = useCart();
 
   const onRemove = () => {
+    cart.removeAllItems(data.id);
+  };
+
+  const addItem = () => {
+    cart.addItem(data);
+  };
+
+  const removeItem = () => {
     cart.removeItem(data.id);
   };
 
@@ -45,6 +54,11 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
               {data.size}
             </p>
           </div>
+        </div>
+        <div className="flex flex-row justify-end gap-6 mb-4">
+          <IconButton onClick={removeItem} icon={<Minus size={15} />} />
+          <p className="inline-flex items-center">{amount}</p>
+          <IconButton onClick={addItem} icon={<Plus size={15} />} />
         </div>
       </div>
     </li>
