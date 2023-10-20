@@ -51,11 +51,6 @@ export default function ProductCard({ data }: ProductProps) {
       </div>
       <CardContent className="mt-4">
         <CardTitle className="font-semibold text-lg ">{data.name}</CardTitle>
-        {/*       
-        <CardDescription className="text-gray-500 text-sm">
-          {data.description}
-        </CardDescription> 
-        */}
         <CardFooter className="flex items-left justify-between mt-2 p-0">
           <div className="font-semibold">{`${data.price} kr`}</div>
           <IconButton
