@@ -24,6 +24,7 @@ export interface FormattedProduct {
   category: string;
   size: string;
   color: string;
+  colorValue: string;
   price: string;
   isFeatured: boolean;
   isArchived: boolean;
