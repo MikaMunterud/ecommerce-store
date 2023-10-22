@@ -19,7 +19,6 @@ export interface FormattedProduct {
   name: string;
   img: string;
   description: string;
-  storeId: string;
   categoryId: string;
   category: string;
   size: string;
@@ -27,8 +26,7 @@ export interface FormattedProduct {
   colorValue: string;
   price: string;
   isFeatured: boolean;
-  isArchived: boolean;
-  created: Date;
+  created: string;
 }
 export interface Billboard {
   id: string;
