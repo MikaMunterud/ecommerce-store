@@ -52,6 +52,7 @@ export default function ProductCard({ data }: ProductProps) {
         <CardFooter className="flex items-left justify-between mt-2 p-0">
           <div className="font-semibold">{`${data.price} kr`}</div>
           <IconButton
+            className="z-10"
             onClick={onAddToCart}
             icon={<ShoppingCart size={20} className="text-gray-600" />}
           />
