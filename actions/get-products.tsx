@@ -64,7 +64,6 @@ async function formatProducts(
         return color.id === product.colorId;
       })?.value,
       isFeatured: product.isFeatured,
-      isArchived: product.isArchived,
       created: format(new Date(product.created), 'do MMM yyyy'),
       img: product.img,
     };
