@@ -22,7 +22,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
       <div className="mt-3 flex flex-col items-start justify-between gap-2">
-        <p className="text-2xl text-gray-500 ">{data.description}</p>
+        <p className="text-md text-gray-500 ">{data.description}</p>
         <p className="text-2xl font-bold text-gray-900">{`${data?.price} kr`}</p>
       </div>
       <hr className="my-4" />
