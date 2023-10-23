@@ -21,23 +21,22 @@ const Info: React.FC<InfoProps> = ({ data }) => {
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
-      <div className="mt-3 flex items-end justify-between">
-        <p className="text-2xl text-gray-900">
-          <Currency value={data?.price} />
-        </p>
+      <div className="mt-3 flex flex-col items-start justify-between gap-2">
+        <p className="text-md text-gray-500 ">{data.description}</p>
+        <p className="text-2xl font-bold text-gray-900">{`${data?.price} kr`}</p>
       </div>
       <hr className="my-4" />
-      <div className="flex items-center gap-x-4">
-        <h3 className="font-semibold text-black">Size:</h3>
-        <div>{data?.size}</div>
-      </div>
-      <div className="flex items-center gap-x-4">
-        <h3 className="font-semibold text-black">Color:</h3>
+      <div className="mt-1 flex text-sm items-center">
+        <p className="text-gray-500">{data.size}</p>
+        <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">
+          {data.color}
+        </p>
         <div
-          className="h-6 w-6 rounded-full border border-gray-600"
-          style={{ backgroundColor: data?.color }}
+          className="h-6 w-6 ml-4 rounded-full border border-gray-200"
+          style={{ backgroundColor: data.colorValue }}
         />
       </div>
+
       <div className="mt-10 flex items-center gap-x-3">
         <Button onClick={onAddToCart} className="flex items-center gap-x-2">
           Add To Cart

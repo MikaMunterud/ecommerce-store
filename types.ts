@@ -19,15 +19,14 @@ export interface FormattedProduct {
   name: string;
   img: string;
   description: string;
-  storeId: string;
   categoryId: string;
   category: string;
   size: string;
   color: string;
+  colorValue: string;
   price: string;
   isFeatured: boolean;
-  isArchived: boolean;
-  created: Date;
+  created: string;
 }
 export interface Billboard {
   id: string;
@@ -55,4 +54,18 @@ export interface Color {
 
 export interface Store {
   name: string;
+}
+
+export interface Order {
+  name: string;
+  email: string;
+  address: string;
+  phone: string;
+  totalPrice: number;
+  orderItems: OrderItem[];
+}
+
+export interface OrderItem {
+  productId: string;
+  quantity: number;
 }

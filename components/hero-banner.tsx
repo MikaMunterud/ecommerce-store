@@ -11,7 +11,6 @@ export default function HeroBanner({ data }: HeroBannerProps) {
     backgroundPosition: 'center',
     color: '#4a4a4a',
   };
-  console.log(data);
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">

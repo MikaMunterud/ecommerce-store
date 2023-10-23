@@ -1,6 +1,6 @@
 'use client';
 
-import getBillboard from '@/actions/get-billboard';
+import { getBillboard } from '@/actions/get-billboard';
 import { getProducts } from '@/actions/get-products';
 import HeroBanner from '@/components/hero-banner';
 import ProductCard from '@/components/product-card';
@@ -19,7 +19,7 @@ export default function Home() {
       setProducts(products);
 
       const billboard = await getBillboard(
-        `cc70759c-b1bf-4fe4-8dc3-4337bd76d316`,
+        `${process.env.NEXT_PUBLIC_HOMEPAGE_BILLBOARD}`,
       );
 
       setBillboard(billboard);

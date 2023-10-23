@@ -1,11 +1,11 @@
 import { Billboard } from '@/types';
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}/billboards`;
+const url = process.env.NEXT_PUBLIC_API_URL;
+import axios from 'axios';
 
-const getBillboard = async (id: string): Promise<Billboard> => {
-  const res = await fetch(`${URL}/${id}`);
+export async function getBillboard(id: string): Promise<Billboard> {
+  const response = await axios.get(`${url}/billboards/${id}`);
+  const data = await response.data;
 
-  return res.json();
-};
-
-export default getBillboard;
+  return data;
+}

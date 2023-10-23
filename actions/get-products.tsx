@@ -1,35 +1,37 @@
-import { Category, Color, Product, Size } from '@/types';
+import { Category, Color, FormattedProduct, Product, Size } from '@/types';
 import axios from 'axios';
 import { format } from 'date-fns';
+import { getCategories } from './get-categories';
+import { getSizes } from './get-sizes';
+import { getColors } from './get-colors';
 
-export async function getProducts() {
+export async function getProducts(): Promise<FormattedProduct | any> {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/products`,
   );
   const data = await response.data;
 
   if (data.length > 0) {
-    const categories = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/categories`,
-    );
-    const categoriesData = await categories.data;
+    const categories = await getCategories();
 
-    const sizes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/sizes`);
-    const sizesData = await sizes.data;
+    const sizes = await getSizes();
 
-    const colors = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/colors`);
-    const colorsData = await colors.data;
+    const colors = await getColors();
+
+    const products = data.filter(function (product: Product) {
+      return !product.isArchived;
+    });
 
     const formattedProducts = await formatProducts(
-      data,
-      categoriesData,
-      sizesData,
-      colorsData,
+      products,
+      categories,
+      sizes,
+      colors,
     );
 
     return formattedProducts;
   } else {
-    return null;
+    return [];
   }
 }
 
@@ -44,7 +46,7 @@ async function formatProducts(
       id: product.id,
       name: product.name,
       description: product.description,
-      price: product.price,
+      price: Number(product.price).toFixed(2),
       categoryId: product.categoryId,
       category: categories.find(function (category: Category) {
         return category.id === product.categoryId;
@@ -60,7 +62,6 @@ async function formatProducts(
         return color.id === product.colorId;
       })?.value,
       isFeatured: product.isFeatured,
-      isArchived: product.isArchived,
       created: format(new Date(product.created), 'do MMM yyyy'),
       img: product.img,
     };

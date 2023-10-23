@@ -1,6 +1,6 @@
 'use client';
 
-import getCategories from '@/actions/get-categories';
+import { getCategories } from '@/actions/get-categories';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -32,7 +32,7 @@ export default function Navbar() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Category</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 lg:grid-cols-[.75fr_1fr]">
+            <ul className="grid gap-y-3 gap-x-3 p-4 sm:w-[150px] md:w-[300px] md:grid-cols-2 lg:w-[500px] lg:grid-cols-3">
               {categories.map(function (category) {
                 const isActive = `/category/${category.id}` === pathname;
 
