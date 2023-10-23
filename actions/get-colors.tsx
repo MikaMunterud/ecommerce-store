@@ -1,11 +1,11 @@
 import { Color } from '@/types';
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}/colors`;
+const url = process.env.NEXT_PUBLIC_API_URL;
+import axios from 'axios';
 
-const getColors = async (): Promise<Color[]> => {
-  const res = await fetch(URL);
+export async function getColors(): Promise<Color[]> {
+  const response = await axios.get(`${url}/colors`);
+  const data = await response.data;
 
-  return res.json();
-};
-
-export default getColors;
+  return data;
+}
