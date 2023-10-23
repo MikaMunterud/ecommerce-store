@@ -48,7 +48,7 @@ export default function ProductPage() {
   const relatedProducts = products.filter(function (p: FormattedProduct) {
     return (
       p.categoryId === product.categoryId &&
-      p.size === product.size &&
+      p.color === product.color &&
       p.id !== product.id
     );
   });
