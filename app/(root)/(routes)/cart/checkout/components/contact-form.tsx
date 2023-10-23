@@ -215,7 +215,7 @@ const ContactForm = () => {
                       <Input
                         type="tel"
                         disabled={loading}
-                        placeholder="Costumer name"
+                        placeholder="Phone number"
                         {...field}
                       />
                     </FormControl>
