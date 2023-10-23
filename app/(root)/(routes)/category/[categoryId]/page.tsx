@@ -2,12 +2,12 @@
 
 import HeroBanner from '@/components/hero-banner';
 import ProductCard from '@/components/product-card';
-import { use, useEffect, useState } from 'react';
-import { useParams, usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import { Billboard, Category, FormattedProduct } from '@/types';
 import { getProducts } from '@/actions/get-products';
-import getCategory from '@/actions/get-category';
-import getBillboard from '@/actions/get-billboard';
+import { getCategory } from '@/actions/get-category';
+import { getBillboard } from '@/actions/get-billboard';
 
 export default function Category() {
   const [products, setProducts] = useState<FormattedProduct[] | any>([]);
