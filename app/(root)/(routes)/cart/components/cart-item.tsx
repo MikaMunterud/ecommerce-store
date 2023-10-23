@@ -37,7 +37,7 @@ const CartItem: React.FC<CartItemProps> = ({ data, amount }) => {
         <Image
           fill
           src={data.img}
-          alt=""
+          alt={data.name}
           className="object-cover object-center"
         />
       </div>
@@ -52,10 +52,14 @@ const CartItem: React.FC<CartItemProps> = ({ data, amount }) => {
           >
             <p className=" text-lg font-semibold text-black">{data.name}</p>
             <div className="mb-4 flex text-sm items-center justify-end">
-              <p className="text-gray-500">{data.color}</p>
+              <p className="text-gray-500">{data.size}</p>
               <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">
-                {data.size}
+                {data.color}
               </p>
+              <div
+                className="h-6 w-6 ml-4 rounded-full border border-gray-200"
+                style={{ backgroundColor: data.colorValue }}
+              />
             </div>
           </div>
         </div>

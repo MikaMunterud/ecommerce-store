@@ -27,9 +27,9 @@ const Info: React.FC<InfoProps> = ({ data }) => {
       </div>
       <hr className="my-4" />
       <div className="mt-1 flex text-sm items-center">
-        <p className="text-gray-500">{data.color}</p>
+        <p className="text-gray-500">{data.size}</p>
         <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">
-          {data.size}
+          {data.color}
         </p>
         <div
           className="h-6 w-6 ml-4 rounded-full border border-gray-200"
