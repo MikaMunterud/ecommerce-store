@@ -1,11 +1,11 @@
 import { Category } from '@/types';
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}/categories`;
+const url = process.env.NEXT_PUBLIC_API_URL;
+import axios from 'axios';
 
-const getCategory = async (id: string): Promise<Category> => {
-  const res = await fetch(`${URL}/${id}`);
+export async function getCategory(id: string): Promise<Category> {
+  const response = await axios.get(`${url}/categories/${id}`);
+  const data = await response.data;
 
-  return res.json();
-};
-
-export default getCategory;
+  return data;
+}

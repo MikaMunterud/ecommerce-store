@@ -19,9 +19,10 @@ const PreviewModal = () => {
         <div className="sm:col-span-4 lg:col-span-5">
           <div className="aspect-square relative h-full w-full sm:rounded-lg overflow-hidden">
             <Image
-              fill
               src={product.img}
-              alt="Image"
+              alt={product.name}
+              width={300}
+              height={300}
               className="object-cover object-center"
             />
           </div>

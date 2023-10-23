@@ -1,6 +1,6 @@
 'use client';
 
-import getCategories from '@/actions/get-categories';
+import { getCategories } from '@/actions/get-categories';
 import {
   NavigationMenu,
   NavigationMenuContent,

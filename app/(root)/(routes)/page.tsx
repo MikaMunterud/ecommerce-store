@@ -1,6 +1,6 @@
 'use client';
 
-import getBillboard from '@/actions/get-billboard';
+import { getBillboard } from '@/actions/get-billboard';
 import { getProducts } from '@/actions/get-products';
 import HeroBanner from '@/components/hero-banner';
 import ProductCard from '@/components/product-card';
