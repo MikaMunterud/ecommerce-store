@@ -1,11 +1,11 @@
 import { Size } from '@/types';
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}/sizes`;
+const url = process.env.NEXT_PUBLIC_API_URL;
+import axios from 'axios';
 
-const getSizes = async (): Promise<Size[]> => {
-  const res = await fetch(URL);
+export async function getSizes(): Promise<Size[]> {
+  const response = await axios.get(`${url}/sizes`);
+  const data = await response.data;
 
-  return res.json();
-};
-
-export default getSizes;
+  return data;
+}
