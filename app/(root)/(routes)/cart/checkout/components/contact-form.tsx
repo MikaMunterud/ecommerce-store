@@ -45,7 +45,8 @@ const formSchema = z.object({
     .min(1, { message: 'Zip code must be at least one character.' })
     .max(6, { message: 'Zip code must be less than 6 characters.' })
     .regex(/^[0-9]{3}\s?[0-9]{2}$/, {
-      message: 'Zip code must be a valid Swedish zip code.',
+      message:
+        'Zip code must be a valid Swedish zip code of 5 numbers xxxxx or xxx xx.',
     }),
   city: z
     .string()
@@ -67,7 +68,7 @@ const formSchema = z.object({
     .min(1, { message: 'Phone must be at least one character.' })
     .max(10, { message: 'Phone must be less than 10 characters.' })
     .regex(/^(((0{2}?))|0)7[\d]{8}/, {
-      message: 'Phone number must be a valid Swedish phone number.',
+      message: 'Phone number must be a valid Swedish phone number 07xxxxxxxx.',
     }),
 });
 
