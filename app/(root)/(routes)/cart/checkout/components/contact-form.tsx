@@ -28,28 +28,47 @@ import { Separator } from '@/components/ui/separator';
 const formSchema = z.object({
   name: z
     .string()
-    .min(1, { message: 'Name must be at least one character.' })
-    .max(50, { message: 'Name must be less than 50 characters.' }),
+    .min(3, { message: 'Name must be at least three character.' })
+    .max(50, { message: 'Name must be less than 50 characters.' })
+    .regex(/^[a-öA-Ö]+ [a-öA-Ö]+$/, {
+      message: 'Please enter both first name and last name.',
+    }),
   address: z
     .string()
-    .min(1, { message: 'Name must be at least one character.' })
-    .max(20, { message: 'Name must be less than 50 characters.' }),
+    .min(1, { message: 'Address must be at least one character.' })
+    .max(30, { message: 'Address must be less than 30 characters.' })
+    .regex(/^((.){1,}(\d){1,}(.){0,})$/, {
+      message: 'Address must be valid street and street number.',
+    }),
   zipCode: z
     .string()
-    .min(1, { message: 'Name must be at least one character.' })
-    .max(6, { message: 'Name must be less than 50 characters.' }),
+    .min(1, { message: 'Zip code must be at least one character.' })
+    .max(6, { message: 'Zip code must be less than 6 characters.' })
+    .regex(/^[0-9]{3}\s?[0-9]{2}$/, {
+      message: 'Zip code must be a valid Swedish zip code.',
+    }),
   city: z
     .string()
-    .min(1, { message: 'Name must be at least one character.' })
-    .max(20, { message: 'Name must be less than 50 characters.' }),
+    .min(1, { message: 'City must be at least one character.' })
+    .max(20, { message: 'City must be less than 20 characters.' })
+    .regex(/^[a-öA-Ö]*$/, {
+      message:
+        'City must be valid and cannot contain any special characters or numbers.',
+    }),
   email: z
     .string()
-    .min(1, { message: 'Name must be at least one character.' })
-    .max(50, { message: 'Name must be less than 50 characters.' }),
+    .min(1, { message: 'E-mail must be at least one character.' })
+    .max(50, { message: 'E-mail must be less than 50 characters.' })
+    .regex(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, {
+      message: 'E-mail must be a valid e-mail address.',
+    }),
   phone: z
     .string()
-    .min(1, { message: 'Name must be at least one character.' })
-    .max(10, { message: 'Name must be less than 50 characters.' }),
+    .min(1, { message: 'Phone must be at least one character.' })
+    .max(10, { message: 'Phone must be less than 10 characters.' })
+    .regex(/^(((0{2}?))|0)7[\d]{8}/, {
+      message: 'Phone number must be a valid Swedish phone number.',
+    }),
 });
 
 type ContactFormValues = z.infer<typeof formSchema>;
